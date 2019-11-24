@@ -251,8 +251,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung
 
 # Overlays
-PRODUCT_ENFORCE_RRO_TARGETS := *
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-lineage
 
+PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     FrameworksResCommon \
