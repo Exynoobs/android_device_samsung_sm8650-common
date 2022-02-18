@@ -17,6 +17,7 @@
 /mnt/vendor/efs/camera(/.*)?                 u:object_r:camera_efs_file:s0
 /mnt/vendor/efs/prov(/.*)?                   u:object_r:dak_efs_file:s0
 /mnt/vendor/efs/prov_data(/.*)?              u:object_r:dak_efs_file:s0
+/mnt/vendor/efs/spen(/.*)?                   u:object_r:spen_efs_file:s0
 /mnt/vendor/efs/tee(/.*)?                    u:object_r:tee_efs_file:s0
 
 # Battery
@@ -52,6 +53,9 @@
 /dev/ttyGS[0-9]*                             u:object_r:serial_device:s0
 /dev/ttyHS[0-9]*                             u:object_r:serial_device:s0
 
+# SPen
+/sys/devices/virtual/sec/sec_epen(/.*)?                                                             u:object_r:vendor_sysfs_spen:s0
+
 # Goodix fingerprint device
 /dev/goodix_fp                               u:object_r:goodix_fingerprint_device:s0
 
@@ -77,7 +81,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health-service\.samsung                                    u:object_r:hal_health_default_exec:s0
 /(vendor|system/vendor)/bin/hw/secaudiohalaidl                                                               u:object_r:hal_audio_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch-service\.samsung(-q5q)?                                u:object_r:hal_lineage_touch_default_exec:s0
-
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.spen-service                                       u:object_r:hal_samsung_spen_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay-service.samsung-qcom                             u:object_r:hal_lineage_livedisplay_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.powershare-service\.samsung                                  u:object_r:hal_lineage_powershare_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.2-service                                u:object_r:hal_secure_element_default_exec:s0

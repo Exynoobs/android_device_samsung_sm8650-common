@@ -21,6 +21,7 @@ type camera_efs_file, file_type;
 type dak_efs_file, file_type;
 type imei_efs_file, file_type;
 type sec_efs_file, file_type;
+type spen_efs_file, file_type;
 type tee_efs_file, file_type;
 
 # Fastcharge
@@ -41,6 +42,9 @@ type proc_simslot_count, fs_type, proc_type;
 
 # Sensor
 type vendor_sysfs_sensors_writable, fs_type, sysfs_type;
+
+# S pen
+type vendor_sysfs_spen, sysfs_type, fs_type;
 
 # Thermal
 type vendor_sysfs_thermal, fs_type, sysfs_type;
