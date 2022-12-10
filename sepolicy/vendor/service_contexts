@@ -1,6 +1,3 @@
-# Hyper
-vendor.samsung.hardware.hyper.ISehHyPer/default                     u:object_r:hal_hyper_service:s0
-
 # Gnss
 vendor.samsung.hardware.gnss.ISehGnss/default                       u:object_r:hal_gnss_service:s0
 

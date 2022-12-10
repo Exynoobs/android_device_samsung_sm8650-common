@@ -12,7 +12,6 @@ allow hal_thermal_default fwk_camera_hwservice:hwservice_manager find;
 binder_call(hal_thermal_default, cameraserver)
 
 hal_client_domain(hal_thermal_default, hal_audio)
-hal_client_domain(hal_thermal_default, hal_hyper)
 
 unix_socket_connect(hal_thermal_default, property, rild)
 get_prop(hal_thermal_default, vendor_thermal_prop)

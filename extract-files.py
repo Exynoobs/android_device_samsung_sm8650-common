@@ -39,7 +39,6 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.diaghal@1.0',
         'libsecril-client',
         'vendor.qti.hardware.fm@1.0',
-        'libhyper',
     ): lib_fixup_vendor_suffix,
     (
         'libagmclient',
