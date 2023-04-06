@@ -262,5 +262,8 @@
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
          The default is false. -->
-    <bool name="config_lidControlsSleep">true</bool>
+	<bool name="config_lidControlsSleep">true</bool>
+
+    <!-- If true, the display will be shifted around in ambient mode. -->
+    <bool name="config_enableBurnInProtection">true</bool>
 </resources>
