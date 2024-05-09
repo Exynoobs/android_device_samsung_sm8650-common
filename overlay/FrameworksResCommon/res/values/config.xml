@@ -295,4 +295,7 @@
         <item>eutran,11</item>
         <item>nfc,1</item>
     </string-array>
+
+    <!-- Bytes that the PinnerService will pin for Home app -->
+    <integer name="config_pinnerHomePinBytes">6291456</integer>
 </resources>
