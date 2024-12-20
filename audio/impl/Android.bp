@@ -61,7 +61,7 @@ cc_defaults {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@2.0-impl.samsung-smsm8550",
+    name: "android.hardware.audio@2.0-impl.samsung-sm8550",
     defaults: ["android.hardware.audio-impl_samsung-sm8550"],
     shared_libs: [
         "android.hardware.audio@2.0",
@@ -78,7 +78,7 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@4.0-impl.samsung-smsm8550",
+    name: "android.hardware.audio@4.0-impl.samsung-sm8550",
     defaults: ["android.hardware.audio-impl_samsung-sm8550"],
 
     shared_libs: [
@@ -96,7 +96,7 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@5.0-impl.samsung-smsm8550",
+    name: "android.hardware.audio@5.0-impl.samsung-sm8550",
     defaults: ["android.hardware.audio-impl_samsung-sm8550"],
     shared_libs: [
         "android.hardware.audio@5.0",
