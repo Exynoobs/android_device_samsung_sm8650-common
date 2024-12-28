@@ -61,4 +61,11 @@
         </interface>
         <fqname>ISehKeyMintFactory/default</fqname>
     </hal>
+    <hal format="aidl">
+        <name>vendor.samsung.hardware.bluetooth.audio</name>
+        <interface>
+            <name>ISehBluetoothAudioProviderFactory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </manifest>
