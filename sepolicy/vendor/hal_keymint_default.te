@@ -1,25 +1,24 @@
 # Allow keymint HAL to read/write efs_file
-allow hal_keymint_default efs_file:dir create_dir_perms;
-allow hal_keymint_default efs_file:file create_file_perms;
+allow vendor_hal_keymint_qti efs_file:dir create_dir_perms;
+allow vendor_hal_keymint_qti efs_file:file create_file_perms;
 
 # Allow keymint HAL to read/write dak_efs_file
-allow hal_keymint_default dak_efs_file:dir create_dir_perms;
-allow hal_keymint_default dak_efs_file:file create_file_perms;
+allow vendor_hal_keymint_qti dak_efs_file:dir create_dir_perms;
+allow vendor_hal_keymint_qti dak_efs_file:file create_file_perms;
 
 # Allow keymint HAL to read/write sec_efs_file
-allow hal_keymint_default sec_efs_file:dir create_dir_perms;
-allow hal_keymint_default sec_efs_file:file create_file_perms;
+allow vendor_hal_keymint_qti sec_efs_file:dir create_dir_perms;
+allow vendor_hal_keymint_qti sec_efs_file:file create_file_perms;
 
 # Allow keymint HAL to access TZ device
-allow hal_keymint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
-allow hal_keymint_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
-allow hal_keymint_default vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
-allow hal_keymint_default vendor_skp_device:chr_file r_file_perms;
-allow hal_keymint_default vendor_spcom_device:chr_file rw_file_perms;
-allow hal_keymint_default vendor_spss_utils_device:chr_file rw_file_perms;
+allow vendor_hal_keymint_qti vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_hal_keymint_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
+allow vendor_hal_keymint_qti vendor_skp_device:chr_file r_file_perms;
+allow vendor_hal_keymint_qti vendor_spcom_device:chr_file rw_file_perms;
+allow vendor_hal_keymint_qti vendor_spss_utils_device:chr_file rw_file_perms;
 
-get_prop(hal_keymint_default, vendor_tee_listener_prop)
-get_prop(hal_keymint_default, vendor_spcomlib_prop)
-allow hal_keymint_default mnt_vendor_file:dir search;
+get_prop(vendor_hal_keymint_qti, vendor_spcomlib_prop)
 
-unix_socket_connect(hal_keymint_default, property, hermesd)
+allow vendor_hal_keymint_qti mnt_vendor_file:dir search;
+
+unix_socket_connect(vendor_hal_keymint_qti, property, hermesd)

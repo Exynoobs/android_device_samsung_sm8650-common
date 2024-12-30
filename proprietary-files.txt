@@ -925,9 +925,9 @@ vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libspcom.so
 
 # Keymint
-vendor/bin/hw/android.hardware.security.keymint-service;MODULE_SUFFIX=.samsung
+vendor/bin/hw/android.hardware.security.keymint-service:vendor/bin/hw/android.hardware.security.keymint-service-qti;FIX_SONAME
 vendor/etc/init/android.hardware.security.keymint-service.rc
-vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml:vendor/etc/vintf/manifest/android.hardware.security.keymint-service.xml
+vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
 vendor/lib64/libskeymint10device.so
 vendor/lib64/libskeymint_cli.so
 vendor/lib64/vendor.samsung.hardware.keymint-V2-ndk.so
