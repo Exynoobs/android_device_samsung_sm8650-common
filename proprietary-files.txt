@@ -1303,8 +1303,6 @@ vendor/etc/vintf/manifest/iweaver_v1_manifest.xml
 vendor/bin/cnss-daemon
 vendor/bin/pktlogconf
 vendor/etc/wifi/indoorchannel.info
-vendor/etc/wifi/p2p_supplicant_overlay.conf
-vendor/etc/wifi/wpa_supplicant_overlay.conf
 
 # Widevine DRM
 vendor/bin/hw/android.hardware.drm-service.widevine
