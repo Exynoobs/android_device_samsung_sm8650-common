@@ -791,6 +791,9 @@ vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc
 vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
+# Euicc - from FP6.QREL.16.82.0
+system/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED|0bcee5707101f66749afec597f36733b5cfb9967
+
 # EVA
 vendor/lib64/libcv_common.so
 vendor/lib64/libeva.so

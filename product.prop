@@ -39,6 +39,9 @@ persist.bluetooth.bqr.event_mask=0
 persist.bluetooth.bqr.min_interval_ms=0
 persist.bluetooth.samsung.a2dp_offload.cap=sbc-aptx-ssc-hifi
 
+# e-SIM
+masterclear.allow_retain_esim_profiles_after_fdr=true
+
 # RKPD
 remote_provisioning.connect_timeout_millis=2000
 remote_provisioning.enable_rkpd=true
