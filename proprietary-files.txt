@@ -791,6 +791,10 @@ vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc
 vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
+# eUICC - from OnePlus 11
+product/etc/permissions/privapp-permissions-euiccgoogle.xml|f2c044ab8db11f299b106375dbd06feef4ff84e0
+product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED|e08fc712975d0c4baed73a2a09f1244ef67179fb
+
 # EVA
 vendor/lib64/libcv_common.so
 vendor/lib64/libeva.so
