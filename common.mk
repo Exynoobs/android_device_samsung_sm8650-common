@@ -378,6 +378,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.samsung
 
+# VINTF
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    device/samsung/sm8650-common/vintf/device_framework_matrix.xml \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
+
+DEVICE_MANIFEST_FILE :=  \
+    $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa.xml \
+    $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa_extn.xml \
+    $(LOCAL_PATH)/vintf/manifest_pineapple.xml \
+    $(LOCAL_PATH)/vintf/manifest_samsung.xml \
+    $(LOCAL_PATH)/vintf/radio_manifest.xml
+
+DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
+
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
