@@ -74,6 +74,15 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtensorflowlite_c.so', 'libtensorflowlite_c_vendor.so'),
     ('vendor/lib64/libsensorndkbridge.so'): blob_fixup()
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
+    (
+        'vendor/bin/qcc-vendor',
+        'vendor/bin/qms',
+        'vendor/bin/xtra-daemon',
+        'vendor/lib64/libcne.so',
+        'vendor/lib64/libqcc_sdk.so',
+        'vendor/lib64/libqms_client.so'
+    ): blob_fixup()
+        .add_needed('libbinder_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
