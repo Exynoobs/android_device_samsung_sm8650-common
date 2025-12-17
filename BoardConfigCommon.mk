@@ -61,7 +61,8 @@ BOARD_BOOTCONFIG := \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3 \
     androidboot.load_modules_parallel=false \
-    androidboot.hypervisor.protected_vm.supported=true
+    androidboot.hypervisor.protected_vm.supported=true \
+    androidboot.selinux=permissive
 
 BOARD_KERNEL_CMDLINE := \
     androidboot.hardware=qcom \
@@ -71,7 +72,8 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.hypervisor.protected_vm.supported=true \
     printk.devkmsg=on \
     firmware_class.path=/vendor/firmware_mnt/image \
-    video=vfb:640x400,bpp=32,memsize=3072000
+    video=vfb:640x400,bpp=32,memsize=3072000 \
+    androidboot.selinux=permissive
 
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_IMAGE_NAME := Image
