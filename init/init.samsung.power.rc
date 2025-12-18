@@ -1,5 +1,4 @@
-
-# Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019-2023, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -41,18 +40,11 @@ on late-fs
 on post-fs-data
 
 on boot
+    chown radio system /sys/class/sec/ap_pmic/gpio_dump
+    chmod 664 /sys/class/sec/ap_pmic/gpio_dump
     write /sys/power/pm_debug_messages 1
-    # Set online permission as system|system
-    chown system system /sys/devices/system/cpu/cpu3/online
-    chmod 0660 /sys/devices/system/cpu/cpu3/online
-    chown system system /sys/devices/system/cpu/cpu4/online
-    chmod 0660 /sys/devices/system/cpu/cpu4/online
-    chown system system /sys/devices/system/cpu/cpu5/online
-    chmod 0660 /sys/devices/system/cpu/cpu5/online
-    chown system system /sys/devices/system/cpu/cpu6/online
-    chmod 0660 /sys/devices/system/cpu/cpu6/online
-    chown system system /sys/devices/system/cpu/cpu7/online
-    chmod 0660 /sys/devices/system/cpu/cpu7/online
+
+    # limit driver
     chown radio system /sys/devices/system/cpu/cpufreq_limit/cpufreq_max_limit
     chown radio system /sys/devices/system/cpu/cpufreq_limit/cpufreq_min_limit
     chown radio system /sys/devices/system/cpu/cpufreq_limit/cpufreq_table
@@ -63,44 +55,23 @@ on boot
     chmod 444 /sys/devices/system/cpu/cpufreq_limit/cpufreq_table
     chmod 664 /sys/devices/system/cpu/cpufreq_limit/over_limit
     chmod 664 /sys/devices/system/cpu/cpufreq_limit/limit_stat
-    chown system system /sys/class/sec/ap_pmic/chg_det
     chown system system /sys/class/sec/ap_pmic/manual_reset
     chown radio system /sys/class/sec/ap_pmic/wake_enabled
     chmod 664 /sys/class/sec/ap_pmic/wake_enabled
-    chown radio system /sys/class/sec/ap_pmic/volkey_wakeup
-    chmod 660 /sys/class/sec/ap_pmic/volkey_wakeup
-    write /sys/class/sec/ap_pmic/volkey_wakeup 1
-    chown radio system /sys/class/sec/ap_pmic/gpio_dump
-    chmod 664 /sys/class/sec/ap_pmic/gpio_dump
 
-# Permissions for IAFT
-    chown radio system /sys/power/iaft/enable_code
-    chown radio system /sys/power/iaft/enable_tid
-    chown radio system /sys/power/iaft/sleep_time
-    chmod 664 /sys/power/iaft/enable_code
-    chmod 664 /sys/power/iaft/enable_tid
-    chmod 664 /sys/power/iaft/sleep_time
-
-    # Display PMIC
-    chown system system /sys/class/sec/disp_pmic/enable_fd
-    chmod 664 /sys/class/sec/disp_pmic/enable_fd
-
-    # AP info
     chown system system /sys/class/sec/ap_pmic/ap_info
     chmod 0400 /sys/class/sec/ap_pmic/ap_info
-
-    # Adaptive boost(silver)
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/walt/adaptive_high_freq
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/walt/adaptive_low_freq
-    chmod 664 /sys/devices/system/cpu/cpufreq/policy0/walt/adaptive_high_freq
-    chmod 664 /sys/devices/system/cpu/cpufreq/policy0/walt/adaptive_low_freq
-
 on property:sys.boot_completed=1
-    write /sys/class/secgpio_check/secgpio_check_all/gpioinit_call 1
-    chmod 220 /dev/power_on_alarm
+
+on charger
 
 on shutdown
 
 # service definition
 
 # on property triggers
+
+on property:sys.boot_completed=1
+    write /sys/class/secgpio_check/secgpio_check_all/gpioinit_call 1
+    write /sys/devices/platform/soc/c320000.sys-pm-vx/debug_enable 1
+    chmod 220 /dev/power_on_alarm

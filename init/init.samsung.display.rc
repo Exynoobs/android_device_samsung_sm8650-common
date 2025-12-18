@@ -81,6 +81,8 @@ on post-fs-data
 	chmod 0660 /sys/class/mdnie/mdnie/mdnie_ldu
 	chown system media_rw /sys/class/mdnie/mdnie/night_mode
 	chmod 0660 /sys/class/mdnie/mdnie/night_mode
+	chown system media_rw /sys/class/mdnie/mdnie/adaptive_mode
+	chmod 0660 /sys/class/mdnie/mdnie/adaptive_mode
 	chown system system /sys/class/mdnie/mdnie/color_lens
 	chmod 0660 /sys/class/mdnie/mdnie/color_lens
 	chown system media_rw /sys/class/mdnie/mdnie/hdr
@@ -91,6 +93,12 @@ on post-fs-data
 	chmod 0660 /sys/class/mdnie/mdnie/light_notification
 	chown system system /sys/class/mdnie/mdnie/afc
 	chmod 0660 /sys/class/mdnie/mdnie/afc
+	chown system system /sys/class/mdnie/mdnie/anti_glare
+	chmod 0660 /sys/class/mdnie/mdnie/anti_glare
+	chown system system /sys/class/mdnie/mdnie/extra_dim
+	chmod 0660 /sys/class/mdnie/mdnie/extra_dim
+	chown system system /sys/class/mdnie/mdnie/vividness
+	chmod 0660 /sys/class/mdnie/mdnie/vividness
 
 	chown system system  /sys/class/mdnie/mdnie1/lcdtype
 	chown system system  /sys/class/mdnie/mdnie1/lcd_power
@@ -112,6 +120,8 @@ on post-fs-data
 	chmod 0660 /sys/class/mdnie/mdnie1/mdnie_ldu
 	chown system media_rw /sys/class/mdnie/mdnie1/night_mode
 	chmod 0660 /sys/class/mdnie/mdnie1/night_mode
+	chown system media_rw /sys/class/mdnie/mdnie1/adaptive_mode
+	chmod 0660 /sys/class/mdnie/mdnie1/adaptive_mode
 	chown system system /sys/class/mdnie/mdnie1/color_lens
 	chmod 0660 /sys/class/mdnie/mdnie1/color_lens
 	chown system media_rw /sys/class/mdnie/mdnie1/hdr
@@ -122,6 +132,12 @@ on post-fs-data
 	chmod 0660 /sys/class/mdnie/mdnie1/light_notification
 	chown system system /sys/class/mdnie/mdnie1/afc
 	chmod 0660 /sys/class/mdnie/mdnie1/afc
+	chown system system /sys/class/mdnie/mdnie1/anti_glare
+	chmod 0660 /sys/class/mdnie/mdnie1/anti_glare
+	chown system system /sys/class/mdnie/mdnie1/extra_dim
+	chmod 0660 /sys/class/mdnie/mdnie1/extra_dim
+	chown system system /sys/class/mdnie/mdnie1/vividness
+	chmod 0660 /sys/class/mdnie/mdnie1/vividness
 
 	mkdir /efs/afc 0700 system system
 	chmod 700 /efs/afc
@@ -155,6 +171,13 @@ on post-fs-data
 
 	chown system system /sys/class/lcd/panel1/alpm
 	chmod 0660 /sys/class/lcd/panel1/alpm
+
+# HLPM Mode
+	chown system system /sys/class/lcd/panel/hlpm_mode
+	chmod 0660 /sys/class/lcd/panel/hlpm_mode
+
+	chown system system /sys/class/lcd/panel1/hlpm_mode
+	chmod 0660 /sys/class/lcd/panel1/hlpm_mode
 
 # Active Clock in AOD
 	chown system system /dev/act_clk
@@ -285,6 +308,13 @@ on post-fs-data
 	chown system system /sys/class/lcd/panel1/hw_cursor
 	chmod 0660 /sys/class/lcd/panel1/hw_cursor
 
+# PANEL AGING
+	chown system system /sys/class/lcd/panel/panel_aging
+	chmod 0660 /sys/class/lcd/panel/panel_aging
+
+	chown system system /sys/class/lcd/panel1/panel_aging
+	chmod 0660 /sys/class/lcd/panel1/panel_aging
+
 # DSC CRC
 	chown system system /sys/class/lcd/panel/dsc_crc
 	chmod 0660 /sys/class/lcd/panel/dsc_crc
@@ -313,6 +343,13 @@ on post-fs-data
 	chown system system /sys/class/lcd/panel1/vglhighdot
 	chmod 0660 /sys/class/lcd/panel1/vglhighdot
 
+# SPOT_REPAIR_CHECK
+	chown system system /sys/class/lcd/panel/spot_repair_check
+	chmod 0660 /sys/class/lcd/panel/spot_repair_check
+
+	chown system system /sys/class/lcd/panel1/spot_repair_check
+	chmod 0660 /sys/class/lcd/panel1/spot_repair_check
+	
 # POC
 	chown system system /sys/class/lcd/panel/poc
 	chmod 0660 /sys/class/lcd/panel/poc
@@ -373,6 +410,7 @@ on post-fs-data
 	chown radio system /sys/class/lcd/panel/temperature
 	chown radio system /sys/class/lcd/panel/tuning
 	chown radio system /sys/class/lcd/panel/lux
+	chown system system /sys/class/lcd/panel/smooth_dim
 	chown radio system /sys/class/lcd/panel/partial_disp
 	chmod 0660 /sys/class/lcd/panel/partial_disp
 	chown radio system /sys/class/lcd/panel/cover_control
@@ -387,6 +425,7 @@ on post-fs-data
 	chown radio system /sys/class/lcd/panel1/temperature
 	chown radio system /sys/class/lcd/panel1/tuning
 	chown radio system /sys/class/lcd/panel1/lux
+	chown system system /sys/class/lcd/panel1/smooth_dim
 	chown radio system /sys/class/lcd/panel1/partial_disp
 	chmod 0660 /sys/class/lcd/panel1/partial_disp
 	chown radio system /sys/class/lcd/panel1/cover_control
@@ -516,8 +555,12 @@ on post-fs-data
 # VRR
 	chown system system /sys/class/lcd/panel/vrr
 	chmod 0440 /sys/class/lcd/panel/vrr
+	chown system system /sys/class/lcd/panel1/vrr
+	chmod 0440 /sys/class/lcd/panel1/vrr
 	chown system system /sys/class/lcd/panel/vrr_lfd
 	chmod 0660 /sys/class/lcd/panel/vrr_lfd
+	chown system system /sys/class/lcd/panel1/vrr_lfd
+	chmod 0660 /sys/class/lcd/panel1/vrr_lfd
 	chown system system /sys/class/drm/card0/device/perf_mode
 	chmod 0666 /sys/class/drm/card0/device/perf_mode
 
@@ -560,11 +603,12 @@ on post-fs-data
 	chown system system /sys/class/lcd/panel1/tcon_pe
 	chmod 0660 /sys/class/lcd/panel1/tcon_pe
 
-# vendor graphics trace points - perfetto-trace
-    chmod 0660 /sys/kernel/debug/tracing/events/drm/enable
-    chmod 0660 /sys/kernel/tracing/events/drm/enable
-    chmod 0660 /sys/kernel/debug/events/tracing/sde/enable
-    chmod 0660 /sys/kernel/tracing/events/sde/enable
+# check for display on time
+	chown system system /sys/class/lcd/panel/display_on
+	chmod 0440 /sys/class/lcd/panel/display_on
+
+	chown system system /sys/class/lcd/panel1/display_on
+	chmod 0440 /sys/class/lcd/panel1/display_on
 
     chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_cmd_release_bw/enable
     chmod 0660 /sys/kernel/tracing/events/sde/sde_cmd_release_bw/enable

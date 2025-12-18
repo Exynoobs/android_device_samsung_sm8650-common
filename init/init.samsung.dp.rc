@@ -41,8 +41,17 @@ on post-fs
 on late-fs
 
 on post-fs-data
+	# Permission for ESE
+	chmod 0660 /dev/p61
+	chown system system /dev/p61
 
 on boot
+	# Permission for NFC
+	chmod 0660 /dev/pn547
+	chown nfc nfc /dev/pn547
+	chmod 0660 /dev/p61
+	chown system system /dev/p61
+
 	# Permission for Secure NVM
 	chmod 0660 /dev/k250a
 	chown system system /dev/k250a
@@ -66,6 +75,10 @@ on boot
 	# DP monitor info
 	chmod 0444 /sys/class/dp_sec/monitor_info
 	chown system system /sys/class/dp_sec/monitor_info
+
+	# DP bandwidth code
+	chmod 0440 /sys/class/dp_sec/bw_code
+	chown system radio /sys/class/dp_sec/bw_code
 
 on shutdown
 
