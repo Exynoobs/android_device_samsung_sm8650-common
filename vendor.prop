@@ -122,7 +122,6 @@ debug.sf.earlyGl.sf.duration=16600000
 debug.sf.enable_gl_backpressure=0
 debug.sf.enable_hwc_vds=0
 debug.sf.gpu_freq_index=7
-debug.sf.latch_unsignaled=1
 debug.sf.late.app.duration=16600000
 debug.sf.late.sf.duration=10500000
 debug.sf.predict_hwc_composition_strategy=0
