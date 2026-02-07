@@ -18,8 +18,8 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/samsung/sm8550-common',
-    'hardware/qcom-caf/sm8550',
+    'device/samsung/sm8650-common',
+    'hardware/qcom-caf/sm8650',
     'hardware/qcom-caf/wlan',
     'hardware/samsung',
     'vendor/qcom/opensource/commonsys-intf/display',
@@ -56,7 +56,7 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('default0', 'software'),
     'vendor/etc/init/vendor.qti.media.c2audio@1.0-service.rc': blob_fixup()
         .regex_replace('.*disabled.*\n', ''),
-    ('vendor/etc/media_codecs_kalama.xml'): blob_fixup()
+    ('vendor/etc/media_codecs_pineapple.xml'): blob_fixup()
         .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('libcodec2_shim.so'),
@@ -74,7 +74,7 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'sm8550-common',
+    'sm8650-common',
     'samsung',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,

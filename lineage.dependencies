@@ -8,15 +8,15 @@
         "target_path": "hardware/samsung"
     },
     {
-        "repository": "android_kernel_samsung_sm8550",
-        "target_path": "kernel/samsung/sm8550"
+        "repository": "android_kernel_samsung_sm8650",
+        "target_path": "kernel/samsung/sm8650"
     },
     {
-        "repository": "android_kernel_samsung_sm8550-devicetrees",
-        "target_path": "kernel/samsung/sm8550-devicetrees"
+        "repository": "android_kernel_samsung_sm8650-devicetrees",
+        "target_path": "kernel/samsung/sm8650-devicetrees"
     },
     {
-        "repository": "android_kernel_samsung_sm8550-modules",
-        "target_path": "kernel/samsung/sm8550-modules"
+        "repository": "android_kernel_samsung_sm8650-modules",
+        "target_path": "kernel/samsung/sm8650-modules"
     }
 ]

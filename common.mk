@@ -22,7 +22,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@7.1-impl.samsung-sm8550 \
+    android.hardware.audio@7.1-impl.samsung-sm8650 \
     android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
     android.hardware.bluetooth.audio-impl \
@@ -41,20 +41,20 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
-    sound_trigger.primary.kalama
+    sound_trigger.primary.pineapple
 
-AUDIO_HAL_DIR := hardware/qcom-caf/sm8550/audio/primary-hal
-CONFIG_HAL_SRC_DIR := $(AUDIO_HAL_DIR)/configs/kalama
-CONFIG_PAL_SRC_DIR := $(AUDIO_HAL_DIR)/../pal/configs/kalama
+AUDIO_HAL_DIR := hardware/qcom-caf/sm8650/audio/primary-hal
+CONFIG_HAL_SRC_DIR := $(AUDIO_HAL_DIR)/configs/pineapple
+CONFIG_PAL_SRC_DIR := $(AUDIO_HAL_DIR)/../pal/configs/pineapple
 
 PRODUCT_COPY_FILES += \
-    $(CONFIG_HAL_SRC_DIR)/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama/audio_effects.conf \
-    $(CONFIG_HAL_SRC_DIR)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama/audio_effects.xml \
+    $(CONFIG_HAL_SRC_DIR)/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_pineapple/audio_effects.conf \
+    $(CONFIG_HAL_SRC_DIR)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_pineapple/audio_effects.xml \
     $(CONFIG_PAL_SRC_DIR)/card-defs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/card-defs.xml \
     $(CONFIG_HAL_SRC_DIR)/microphone_characteristics.xml:$(TARGET_COPY_OUT_VENDOR)/etc/microphone_characteristics.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama_qssi/audio_policy_configuration.xml
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_pineapple/audio_policy_configuration.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
@@ -396,4 +396,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 # Inherit from the proprietary files makefile.
-$(call inherit-product, vendor/samsung/sm8550-common/sm8550-common-vendor.mk)
+$(call inherit-product, vendor/samsung/sm8650-common/sm8650-common-vendor.mk)
