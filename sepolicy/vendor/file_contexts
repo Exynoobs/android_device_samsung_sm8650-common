@@ -39,11 +39,6 @@
 # NFC device
 /dev/pn547                                   u:object_r:nfc_device:s0
 
-# Qms logs
-/data/vendor/qms_logs/config(/.*)?           u:object_r:vendor_qms_config_data_file:s0
-/data/vendor/qms_logs/main(/.*)?             u:object_r:vendor_qms_main_data_file:s0
-/data/vendor/qms_logs/other(/.*)?            u:object_r:vendor_qms_other_data_file:s0
-
 # Radio device
 /dev/drb                                     u:object_r:drb_device:s0
 
