@@ -1,85 +1,25 @@
 <!--
-     Copyright (C) 2023 The LineageOS Project
+     Copyright (C) 2025 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
-<compatibility-matrix version="5.0" type="framework">
+<compatibility-matrix version="8.0" type="framework">
     <hal format="aidl" optional="true">
-        <name>android.hardware.biometrics.fingerprint</name>
-        <version>4</version>
+        <name>vendor.samsung.hardware.keymint</name>
+        <version>1-3</version>
         <interface>
-            <name>IFingerprint</name>
+            <name>ISehKeyMintExtension</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ISehKeyMintFactory</name>
             <instance>default</instance>
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>android.hardware.bluetooth.audio</name>
-        <version>4</version>
-        <interface>
-            <name>IBluetoothAudioProviderFactory</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.power</name>
-        <version>5</version>
-        <interface>
-            <name>IPower</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.sensors</name>
-        <version>2</version>
-        <interface>
-            <name>ISensors</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.usb.gadget</name>
+        <name>vendor.samsung.hardware.audio</name>
         <version>1</version>
         <interface>
-            <name>IUsbGadget</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.wifi</name>
-        <version>2</version>
-        <interface>
-            <name>IWifi</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.wifi.hostapd</name>
-       <version>2</version>
-        <interface>
-            <name>IHostapd</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.wifi.supplicant</name>
-        <version>3</version>
-        <interface>
-            <name>ISupplicant</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.bluetooth.a2dpsink</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehBluetoothA2dpSinkProvidersFactory</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.bluetooth</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehBluetooth</name>
+            <name>ISecAudioHal</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -88,22 +28,6 @@
         <version>2</version>
         <interface>
             <name>ISehGnss</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.keymint</name>
-        <version>1-2</version>
-        <interface>
-            <name>ISehKeyMintExtension</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.keymint</name>
-        <version>1-2</version>
-        <interface>
-            <name>ISehKeyMintFactory</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -155,37 +79,6 @@
             <name>ISehRadioSim</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.thermal</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehThermal</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.nfc</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehNfc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.bluetooth.audio</name>
-        <interface>
-            <name>ISehBluetoothAudioProviderFactory</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.audio</name>
-        <version>1</version>
-        <interface>
-            <name>ISecAudioHal</name>
-            <instance>default</instance>
         </interface>
     </hal>
 </compatibility-matrix>

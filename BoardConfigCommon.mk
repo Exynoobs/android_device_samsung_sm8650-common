@@ -183,8 +183,7 @@ DEVICE_MANIFEST_FILE :=  \
     $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa.xml \
     $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa_extn.xml \
     $(COMMON_PATH)/vintf/manifest_pineapple.xml \
-    $(COMMON_PATH)/vintf/manifest_samsung.xml \
-    $(COMMON_PATH)/vintf/radio_manifest.xml
+    $(COMMON_PATH)/vintf/manifest_samsung.xml
 
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 

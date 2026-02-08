@@ -1,72 +1,39 @@
 <!--
-     Copyright (C) 2023 The LineageOS Project
-     SPDX-License-Identifier: Apache-2.0
+     Copyright (C) 2025 The Linux Foundation
+     SPDX-License-Identifier: BSD-3-Clause
 -->
-<manifest version="5.0" type="device" target-level="7">
-    <hal format="hidl">
-        <name>android.hardware.camera.provider</name>
-        <transport>hwbinder</transport>
-        <version>2.7</version>
-        <interface>
-            <name>ICameraProvider</name>
-            <instance>external/0</instance>
-        </interface>
-        <fqname>@2.7::ICameraProvider/external/0</fqname>
+<manifest version="8.0" type="device" target-level="8">
+    <hal format="aidl" optional="true">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <fqname>IKeyMintDevice/default</fqname>
     </hal>
-    <hal format="hidl" override="true">
-        <name>android.hardware.keymaster</name>
-        <transport>hwbinder</transport>
-        <version>4.0</version>
-        <interface>
-            <name>IKeymasterDevice</name>
-            <instance>strongbox</instance>
-        </interface>
-        <fqname>@4.0::IKeymasterDevice/strongbox</fqname>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <fqname>IRemotelyProvisionedComponent/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.bluetooth</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ISehBluetooth</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.0::ISehBluetooth/default</fqname>
+    <hal format="aidl" override="true">
+        <name>android.hardware.security.secureclock</name>
+        <fqname>ISecureClock/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.bluetooth.a2dpsink</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISehBluetoothA2dpSinkProvidersFactory</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::ISehBluetoothA2dpSinkProvidersFactory/default</fqname>
+    <hal format="aidl" override="true">
+        <name>android.hardware.security.sharedsecret</name>
+        <fqname>ISharedSecret/default</fqname>
     </hal>
-    <hal format="aidl">
-        <name>vendor.samsung.hardware.keymint</name>
+    <hal format="aidl" override="true">
+        <name>android.hardware.weaver</name>
         <version>2</version>
         <interface>
-            <name>ISehKeyMintExtension</name>
+            <name>IWeaver</name>
             <instance>default</instance>
         </interface>
+    </hal>
+    <hal format="aidl" override="true">
+        <name>vendor.samsung.hardware.keymint</name>
+        <version>3</version>
         <fqname>ISehKeyMintExtension/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.samsung.hardware.keymint</name>
-        <version>2</version>
-        <interface>
-            <name>ISehKeyMintFactory</name>
-            <instance>default</instance>
-        </interface>
         <fqname>ISehKeyMintFactory/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.samsung.hardware.bluetooth.audio</name>
-        <interface>
-            <name>ISehBluetoothAudioProviderFactory</name>
-            <instance>default</instance>
-        </interface>
     </hal>
     <hal format="aidl">
         <name>vendor.lineage.touch</name>
