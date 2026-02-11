@@ -27,7 +27,7 @@
 # Changes from Qualcomm Innovation Center are provided under the following
 # license:
 #
-# Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+# Copyright (c) 2022, 2024 Qualcomm Innovation Center, Inc. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted (subject to the limitations in the
@@ -75,13 +75,14 @@ on early-init
     symlink /vendor/dsp /dsp
 
   # Change ownership of sysfs power control node
-    chown system graphics /sys/class/drm/card0/device/power/control
+    chown system graphics /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/power/control
+    chown system graphics /sys/devices/platform/soc/a800000.qcom,mdss_mdp/power/control
+    chmod 664 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/power/control
+    chmod 664 /sys/devices/platform/soc/a800000.qcom,mdss_mdp/power/control
 
-    #Disable UFS clock scaling
+    #Disable UFS LPM to save boot time
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 0
-    #Disable UFS auto_hibern8
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 0
-    #Disable UFS clock gating
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 0
 
     chown root system /dev/kmsg
@@ -154,6 +155,18 @@ on boot
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
     chown media audio /sys/kernel/snd_card/card_state
 
+    # for BT MAC address
+    mkdir /mnt/vendor/efs/bluetooth 0770 system bluetooth
+    # if already exist
+    chown system bluetooth /mnt/vendor/efs/bluetooth
+    chown system bluetooth /mnt/vendor/efs/bluetooth/bt_addr
+    chmod 0770 /mnt/vendor/efs/bluetooth
+    chmod 0660 /mnt/vendor/efs/bluetooth/bt_addr
+
+    # permissions for bluetooth.
+    setprop ro.bt.bdaddr_path "/mnt/vendor/efs/bluetooth/bt_addr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+
     # This location is used by QCRIL to host UNIX domain
     # socket files used for internal IPC within QCRIL
     # modules
@@ -194,7 +207,9 @@ on boot
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
-    # Allow access to dload sysfs node
+    # Allow access to emmc rawdump block partition and dload sysfs node
+    chown root system /dev/block/bootdevice/by-name/rawdump
+    chmod 0660 /dev/block/bootdevice/by-name/rawdump
     chown root system /sys/kernel/dload/emmc_dload
     chmod 0660 /sys/kernel/dload/emmc_dload
     chown root system /dev/block/bootdevice/by-name/ramdump
@@ -241,6 +256,8 @@ on boot
     # Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
+    # Create hexlp directory
+    mkdir /mnt/vendor/persist/hexlp 0770 media media
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
@@ -267,13 +284,10 @@ on post-fs-data
     # Create directory for apps access via QTEEConnector
     mkdir /data/vendor/qtee 0770 system system
 
-    # Create folder of camera
-    #mkdir /data/vendor/camera 0770 camera camera
-
-    # SAMSUNG_CAMERA
+    #Create folder of camera
     mkdir /data/vendor/camera 0770 camera system
     mkdir /data/vendor/camera/logdump 0770 camera system
-    chmod 0771 /data/vendor/camera/camxoverridesettings.txt
+    chmod 0664 /data/vendor/camera/camxoverridesettings.txt
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -403,6 +417,9 @@ on post-fs-data
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
 
+    # Create hexlp directory
+    mkdir /data/vendor/hexlp 0770 media media
+
     #Create dir for TUI
     mkdir /data/vendor/tui 0700 system drmrpc
 
@@ -468,11 +485,9 @@ on property:persist.vendor.sys.rawdump_copy=0
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
-    #Enable UFS clock scaling back
+    #Enable UFS LPM back
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
-    #Enable UFS auto_hibern8 back
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 2000
-    #Enable UFS clock gating back
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
     #Reset read ahead for dm-0 and dm-1 to 512kb
     write /sys/block/dm-0/queue/read_ahead_kb 512
@@ -529,6 +544,21 @@ service qmiproxy /system/bin/qmiproxy
     group radio diag
     disabled
 
+service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
+    -iwigig0 -Dnl80211 -c/data/vendor/wifi/wigig_supplicant.conf \
+    -m/data/vendor/wifi/wigig_p2p_supplicant.conf \
+    -O/data/vendor/wifi/wigig_sockets -dd \
+    -e/data/vendor/wifi/wigig_entropy.bin -g@android:wigig/wpa_wigig0 \
+    -S wigigsvc
+    #   we will start as root and wpa_supplicant will switch to user wifi
+    #   after setting up the capabilities required for WEXT
+    #   user wifi
+    #   group wifi inet keystore
+    class main
+    socket wigig/wpa_wigig0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
 # Data Migration
 service vendor.move_wifi_data /system/bin/move_wifi_data.sh
     class main
@@ -537,18 +567,45 @@ service vendor.move_wifi_data /system/bin/move_wifi_data.sh
     disabled
     oneshot
 
-service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
-    class main
-    user wifi
-    group wifi system inet net_admin
-    capabilities NET_ADMIN
-    oneshot
-
-service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
-    user root
-    group root
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
+    class late_start
     disabled
     oneshot
+
+service dhcpcd_bond0 /system/bin/dhcpcd -ABKLG
+    class late_start
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_bond0 /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service wifi_ftmd /system/vendor/bin/wifi_ftmd
+    user system
+    group system inet net_admin
+    socket wififtmd_server dgram 0660 system system
+    disabled
+    oneshot
+
+on property:vendor.wifi.ftmd.load=true
+    insmod /system/lib/modules/pronto/pronto_wlan.ko con_mode=5
 
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
@@ -560,17 +617,15 @@ on property:sys.shutdown.requested=*
     write /sys/kernel/shutdown_wlan/shutdown 1
     stop cnss-daemon
 
-service ssgqmigd /vendor/bin/ssgqmigd
+service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
-    user radio
-    group radio gps system
-    socket ssgqmig seqpacket 0660 radio inet
+    disabled
+    oneshot
 
-service mlid /vendor/bin/mlid
+service iprenew_bt-pan /system/bin/dhcpcd -n
     class late_start
-    user gps
-    group gps
-    socket mlid stream 0666 gps gps
+    disabled
+    oneshot
 
 service loc_launcher /system/vendor/bin/loc_launcher
     class late_start
@@ -595,6 +650,13 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     disabled
     oneshot
 
+service qti-testscripts /system/bin/sh /product/etc/init.qcom.testscripts.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+    seclabel u:r:qti-testscripts:s0
+
 service wifi-sdio-on /vendor/bin/init.qcom.sdio.sh
     class late_start
     group wifi inet
@@ -609,14 +671,10 @@ service wifi-crda /vendor/bin/init.crda.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+    start qti-testscripts
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
-
-service qvop-daemon /vendor/bin/qvop-daemon
-    class late_start
-    user system
-    group system drmrpc
 
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
@@ -724,22 +782,10 @@ service vendor.LKCore-rel /vendor/bin/LKCore
     user system
     group system log diag
 
-service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
-    class late_start
-    user system
-    group system
-
-service esepmdaemon /system/vendor/bin/esepmdaemon
-    class core
-    user system
-    group nfc
-
 on charger
-    #Enable UFS clock scaling back
+    #Enable UFS LPM back
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
-    #Enable UFS auto_hibern8 back
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 2000
-    #Enable UFS clock gating back
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
     setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
@@ -752,16 +798,11 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     disabled
     oneshot
 
-#service time_daemon /vendor/bin/time_daemon
-#    class main
-#    user system
-#    group system
-#    capabilities SYS_TIME
-
-#Mixed HWC versions among targets 
-on property:init.svc.surfaceflinger=restarting
-    stop vendor.qti.hardware.display.composer
-    start vendor.qti.hardware.display.composer
+service time_daemon /vendor/bin/time_daemon
+    class main
+    user system
+    group system
+    capabilities SYS_TIME
 
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
@@ -792,6 +833,14 @@ service vendor.hbtp /vendor/bin/hbtp_daemon
 
 #on property:vendor.chre.enabled=0
 #   stop chre
+
+on property:sys.factory.running_pretest=true
+    write /sys/class/sensors/accelerometer_sensor/lowpassfilter 2
+    write /sys/class/sensors/sub_accelerometer_sensor/lowpassfilter 2
+
+on property:sys.factory.running_pretest=false
+    write /sys/class/sensors/accelerometer_sensor/lowpassfilter 1
+    write /sys/class/sensors/sub_accelerometer_sensor/lowpassfilter 1
 
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
