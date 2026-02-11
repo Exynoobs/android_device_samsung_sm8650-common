@@ -167,6 +167,7 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    fstab.qcom.vendor_ramdisk \
     init.class_main.sh \
     init.mdm.sh \
     init.qcom.early_boot.sh \
