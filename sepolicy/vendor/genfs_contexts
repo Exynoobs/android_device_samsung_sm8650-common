@@ -78,6 +78,7 @@ genfscon sysfs "/devices/virtual/sec/hall_ic/hall_detect"                     u:
 # Thermal
 genfscon sysfs "/devices/virtual/audio/amp"                                   u:object_r:vendor_sysfs_thermal:s0
 genfscon sysfs "/devices/virtual/sec/sec-ap-thermistor"                       u:object_r:vendor_sysfs_thermal:s0
+genfscon sysfs "/devices/virtual/sec/sec-lp-thermistor"                       u:object_r:vendor_sysfs_thermal:s0
 genfscon sysfs "/devices/virtual/sec/sec-cf-thermistor"                       u:object_r:vendor_sysfs_thermal:s0
 genfscon sysfs "/devices/virtual/sec/sec-cp-thermistor"                       u:object_r:vendor_sysfs_thermal:s0
 genfscon sysfs "/devices/virtual/sec/sec-pa-thermistor"                       u:object_r:vendor_sysfs_thermal:s0
