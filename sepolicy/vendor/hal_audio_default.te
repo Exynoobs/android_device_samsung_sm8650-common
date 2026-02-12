@@ -1,3 +1,6 @@
+# Service for SecAudio AIDL HAL
+type hal_sec_audio_service, service_manager_type;
+
 # Allow audio HAL to read sec_efs_file
 r_dir_file(hal_audio_default, sec_efs_file)
 
@@ -21,3 +24,6 @@ dontaudit hal_audio_default default_prop:file { read open getattr map };
 
 # Allow binder calls from audio hal to system app
 binder_call(hal_audio_default, system_app)
+
+# Allow audio HAL to register its SecAudio AIDL service
+allow hal_audio_default hal_sec_audio_service:service_manager add;
