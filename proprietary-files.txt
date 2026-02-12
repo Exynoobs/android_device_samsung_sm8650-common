@@ -995,6 +995,9 @@ vendor/lib64/vendor.samsung.hardware.media.mpp-V5-ndk.so
 # Memory
 vendor/lib64/libvmmem.so
 
+# NFC firmware
+vendor/firmware/nfc/libsn300u_fw.so
+
 # NVM
 vendor/bin/sec_nvm
 vendor/bin/spdaemon
