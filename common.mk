@@ -82,6 +82,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
 
 # Bluetooth
+$(call soong_config_set,bluetooth_module,leaudio_lc3_default_bit,24)
 PRODUCT_PACKAGES += \
     lib_bt_aptx \
     lib_bt_ble \
