@@ -118,6 +118,9 @@ on boot
 # permissions for charging
     chown system radio /sys/class/power_supply/battery/charging_enabled
 
+on charger
+    restart vendor.charger
+
 service factory_ssc /vendor/bin/factory.ssc
     class core
     user system
