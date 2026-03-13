@@ -1266,9 +1266,6 @@ vendor/lib64/vendor.qti.hardware.trustedui@1.2.so
 vendor/bin/ubwcconvert
 vendor/lib64/libubwcp.so
 
-# USB
-vendor/bin/hw/android.hardware.usb-service.qti
-
 # Wi-Fi
 vendor/bin/cnss-daemon
 vendor/etc/wifi/kiwi_v2/WCNSS_qcom_cfg.ini
