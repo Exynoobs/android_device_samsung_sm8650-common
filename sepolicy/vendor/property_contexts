@@ -23,3 +23,7 @@ vendor.thermal.amb.      u:object_r:vendor_thermal_test_prop:s0
 
 # Modprobe (Samsung uses odm. prefix instead of QTI's vendor. prefix)
 odm.system.all.modules.ready       u:object_r:vendor_modprobe_prop:s0
+
+# Wi-Fi
+vendor.wifi.            u:object_r:vendor_wifi_prop:s0
+ro.vendor.wifi.         u:object_r:vendor_wifi_prop:s0
