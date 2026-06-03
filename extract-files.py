@@ -59,7 +59,7 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/lib64/unihal_android.so', 'vendor/lib64/libc2filterplugin.so'): blob_fixup()
         .add_needed('libui_shim.so'),
     'vendor/lib64/libsamsungcamerahal.so': blob_fixup()
-        .sig_replace('E0 8A', '94 8B'),
+        .sig_replace('74 9A', '28 9B'),
     (
         'vendor/lib64/libdpps.so',
         'vendor/lib64/liblearningmodule.so',
