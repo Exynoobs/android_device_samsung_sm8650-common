@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## Are from Samsung Galaxy S24 Ultra (S928BXXS4CYK2)
+## are from Samsung Galaxy S24 Ultra (S928BXXS6DZF2)
 
 # ADSP
 vendor/bin/adsprpcd
@@ -803,22 +803,19 @@ vendor/lib64/libsecnativefeature.so
 vendor/lib64/libsemnativecarrierfeature.so
 
 # Fingerprint
-vendor/lib64/libegis_fp_normal_sensor_test.so
-vendor/lib64/libgf_in_system_lib.so
 vendor/lib64/libqfp_sensortest.so
 vendor/lib64/libsfp_sensor.so
 vendor/lib64/libsfp_teegw.so
-vendor/lib64/libsynaFpSensorTestNwd.so
 vendor/lib64/vendor.samsung.hardware.biometrics.fingerprint-V1-ndk.so
 
-# Gatekeeper
-vendor/bin/hw/android.hardware.gatekeeper-service
-vendor/etc/init/android.hardware.gatekeeper-service.rc
-vendor/lib64/hw/gatekeeper.mdfpp.so
-vendor/lib64/hw/libspuqtigatekeeper.so
-vendor/lib64/libgpt.so
-vendor/lib64/librpmb.so
-vendor/lib64/libssd.so
+# Gatekeeper - from S928BXXS4BYH2
+vendor/bin/hw/android.hardware.gatekeeper-service|feee846c425f4a5eeb1d4a1338edc926123bee96
+vendor/etc/init/android.hardware.gatekeeper-service.rc|ff8adc96d2332ef7f626ee8d7c21ef5931ffa362
+vendor/lib64/hw/gatekeeper.mdfpp.so|416793af5e924306f35cb8c172581c61bc605e53
+vendor/lib64/hw/libspuqtigatekeeper.so|06423aa7917b36dab73244999b9f3bdcb15a2692
+vendor/lib64/libgpt.so|f9ac83b0ff19de813b8c0ac56e9f61f3808acdfc
+vendor/lib64/librpmb.so|67c93c7242844bbced4b0e0577ed9294df3fdd1a
+vendor/lib64/libssd.so|50912a1dfe1a2be71b74c5975b7873655d3d4ee2
 
 # GNSS
 vendor/bin/hw/android.hardware.gnss-aidl-service-qti
@@ -903,15 +900,15 @@ vendor/lib64/libllvm-qgl.so
 # Graphics (Vulkan)
 vendor/lib64/hw/vulkan.adreno.so
 
-# Hermes
-vendor/bin/hermesd
-vendor/etc/init/hermesd.rc
-vendor/lib64/libhermes.so
-vendor/lib64/libhermes_bdbridge.so
-vendor/lib64/libhermes_cred.so
-vendor/lib64/libhwvault.so
-vendor/lib64/libshctrl.so
-vendor/lib64/vendor.samsung.hardware.security.hermes-V1-ndk.so
+# Hermes - from S928BXXS4BYH2
+vendor/bin/hermesd|d70c066b2611a21e043946ca1baf9d2a9e2bbc84
+vendor/etc/init/hermesd.rc|c79cb8a52d464a66951cb4ffea87d7f8182052e9
+vendor/lib64/libhermes.so|cf041df7142998b99d077bc00fd100cd6fbd4061
+vendor/lib64/libhermes_bdbridge.so|7e2b57ee008cf0f6c13aa1bee4d3685824f41348
+vendor/lib64/libhermes_cred.so|90ceed371d6e84818958ec2131f0d7705d42b1e1
+vendor/lib64/libhwvault.so|bc9a8d59cb5dcc42a6bc7307053e896a9ada70ef
+vendor/lib64/libshctrl.so|04430bd3f807ab1a42319c6cb5a601cbd6fb699a
+vendor/lib64/vendor.samsung.hardware.security.hermes-V1-ndk.so|b439f1b1c4396ab9fbcec3ce5fda1d2073efacb7
 
 # HyPer
 vendor/lib64/vendor.samsung.hardware.hyper-V2-ndk.so
@@ -925,18 +922,18 @@ vendor/bin/system_dlkm_modprobe.sh
 vendor/bin/vendor_modprobe.sh
 vendor/etc/init/hw/init.qti.kernel.rc
 
-# Keymint
-vendor/bin/hw/android.hardware.security.keymint-service:vendor/bin/hw/android.hardware.security.keymint-service-qti
-vendor/bin/hw/android.hardware.security.keymint-service-spu-qti
-vendor/etc/init/android.hardware.security.keymint-service-spu-qti.rc
-vendor/etc/init/android.hardware.security.keymint-service.rc:vendor/etc/init/android.hardware.security.keymint-service-qti.rc
-vendor/lib64/libskeymint10device.so
-vendor/lib64/libskeymint_cli.so
-vendor/lib64/libspcom.so
-vendor/lib64/libspukeymint.so
-vendor/lib64/libspukeymintdeviceutils.so
-vendor/lib64/libspukeymintutils.so
-vendor/lib64/vendor.samsung.hardware.keymint-V3-ndk.so
+# Keymint - from S928BXXS4BYH2
+vendor/bin/hw/android.hardware.security.keymint-service:vendor/bin/hw/android.hardware.security.keymint-service-qti|5aecd6d9d240ad5a49867391b03dd7028ea7e14f
+vendor/bin/hw/android.hardware.security.keymint-service-spu-qti|f57b8abe52267fab3b0edf1e95a37d4eba7bf740|48373d62a0746ac9248c7e987f22c051cd295714
+vendor/etc/init/android.hardware.security.keymint-service-spu-qti.rc|425c229ff5bed146529dd0f60a6f9004c3b2090a
+vendor/etc/init/android.hardware.security.keymint-service.rc:vendor/etc/init/android.hardware.security.keymint-service-qti.rc|23773b1927bb40dc185ea173766015236437b580|83973fa3ff2611804f98a6a78331eeb6d41c8c5f
+vendor/lib64/libskeymint10device.so|cdd3dddf6c6211d0022b4bef8e0b88f1a0de6f83
+vendor/lib64/libskeymint_cli.so|55d5f5cd70a129a6e2a59a72125beab25c537350|d8a79b41bcf93171efce1934a34068b163876bf4
+vendor/lib64/libspcom.so|666472ecc62fea6587bbfdfdfc499ab56649272b
+vendor/lib64/libspukeymint.so|b839f5886b1f0077ef2a8082378a2ff2d89f1268|6e94e70a91ecc72ff091c16433cfe3b75ea35b22
+vendor/lib64/libspukeymintdeviceutils.so|75e5d46f92f495f498095e39a20eb4503139473d
+vendor/lib64/libspukeymintutils.so|f7ad83b2ded71fc0f341cb3afdad56f91058dcfe
+vendor/lib64/vendor.samsung.hardware.keymint-V3-ndk.so|9c58af7f50e733bb6646963cb341f90cad8d17ee
 
 # Media
 system_ext/lib64/libmmosal.so
@@ -988,7 +985,6 @@ vendor/lib64/libqcodec2_streaminteg_filter.so
 vendor/lib64/libqcodec2_utils.so
 vendor/lib64/libqcodec2_v4l2codec.so
 vendor/lib64/libsavscmn.so
-vendor/lib64/libsavsvc.so
 vendor/lib64/libsec2imageformatfilter.so
 vendor/lib64/libsimba.media.samsung.so
 vendor/lib64/libstagefright_foundation_vendor.so
@@ -1139,11 +1135,11 @@ vendor/lib64/vendor.samsung.hardware.radio.sim-V1-ndk.so
 product/etc/permissions/UimService.xml
 product/framework/uimservicelibrary.jar
 
-# Secure element
-vendor/lib64/libese-grdg.so
-vendor/lib64/libsec_esek.so
-vendor/lib64/libsec_semHalTlc.so
-vendor/lib64/libspictrl.so
+# Secure element - from S928BXXS4BYH2
+vendor/lib64/libese-grdg.so|ed93ea374a4805ca9757b47cc03ea6a191512a58
+vendor/lib64/libsec_esek.so|a4878f6e7b10e208f4939b37667e748e34395ee8
+vendor/lib64/libsec_semHalTlc.so|209eafba3bb41879d7df4beef82a87a39e5cd50f
+vendor/lib64/libspictrl.so|c3f80e6bbe12e97ead76a30c805f29b420ba6bef
 
 # Secure processor
 vendor/bin/hw/vendor.qti.hardware.secureprocessor@1.0
