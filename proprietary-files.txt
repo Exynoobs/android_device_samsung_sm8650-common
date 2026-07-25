@@ -1120,7 +1120,7 @@ vendor/lib64/libVendorSemDataProps.so
 vendor/lib64/libVendorSemTelephonyProps.so
 vendor/lib64/libengmode_client.so
 vendor/lib64/libril_sem.so
-vendor/lib64/libsec-ril.so
+vendor/lib64/libsec-ril.so:vendor/lib64/libsec-ril-impl.so;FIX_SONAME|5f1ef8b2400cedad2c32e8e65deaca1d0cbe12a5|cdfd19534f15a250942cc45e59198a20478051ad
 vendor/lib64/libsec_semRil.so
 vendor/lib64/libsecril-client.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libvkmanager_vendor.so
