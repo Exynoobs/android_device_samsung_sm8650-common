@@ -47,9 +47,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.security.sharedsecret-V2-ndk.so', 'android.hardware.security.sharedsecret-V1-ndk.so'),
     'vendor/lib64/libskeymint_cli.so': blob_fixup()
         .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
-    'vendor/lib64/libsec-ril.so': blob_fixup()
-        .binary_regex_replace(b'ril.dds.call.ongoing', b'vendor.calls.slot_id')
-        .sig_replace('60 0E 40 F9 E1 03 15 AA 82 0C 80 52 E3 03 14 AA', '60 0E 40 F9 E1 03 15 AA 82 0C 80 52 30 08 0D D2'),
+    'vendor/lib64/libsec-ril-impl.so': blob_fixup()
+        .binary_regex_replace(b'ril.dds.call.ongoing', b'vendor.calls.slot_id'),
     'vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml': blob_fixup()
         .regex_replace('default0', 'software'),
     ('vendor/etc/media_codecs_pineapple.xml'): blob_fixup()
