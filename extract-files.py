@@ -49,6 +49,9 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
     'vendor/lib64/libsec-ril.so': blob_fixup()
         .binary_regex_replace(b'ril.dds.call.ongoing', b'vendor.calls.slot_id')
+        .sig_replace('08 6B AB 01 00 54 00 02 80 52', '08 6B 1F 20 03 D5 00 02 80 52')
+        .sig_replace('6B 0C 01 00 54 81 16 40 B9 00', '6B 08 00 00 14 81 16 40 B9 00')
+        .sig_replace('1F 00 08 6B 6B 01 00 54 80 0A', '1F 00 08 6B 1F 20 03 D5 80 0A')
         .sig_replace('60 0E 40 F9 E1 03 15 AA 82 0C 80 52 E3 03 14 AA', '60 0E 40 F9 E1 03 15 AA 82 0C 80 52 30 08 0D D2'),
     'vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml': blob_fixup()
         .regex_replace('default0', 'software'),
