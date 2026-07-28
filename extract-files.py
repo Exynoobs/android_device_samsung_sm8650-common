@@ -48,7 +48,10 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libskeymint_cli.so': blob_fixup()
         .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
     'vendor/lib64/libsec-ril-impl.so': blob_fixup()
-        .binary_regex_replace(b'ril.dds.call.ongoing', b'vendor.calls.slot_id'),
+        .binary_regex_replace(b'ril.dds.call.ongoing', b'vendor.calls.slot_id')
+        # Always emit uiccApplicationsEnablementChanged
+        .sig_replace('88 58 9D 52 1F 00 08 6B AB 01 00 54', '88 58 9D 52 1F 00 08 6B 1F 20 03 D5')
+        .sig_replace('88 58 9D 52 FF 02 08 6B AB 01 00 54', '88 58 9D 52 FF 02 08 6B 1F 20 03 D5'),
     'vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml': blob_fixup()
         .regex_replace('default0', 'software'),
     ('vendor/etc/media_codecs_pineapple.xml'): blob_fixup()
