@@ -17,6 +17,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.esim_switch.rc",
+    src: "init.esim_switch.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.fingerprint.rc",
     src: "init.fingerprint.rc",
     sub_dir: "init",
