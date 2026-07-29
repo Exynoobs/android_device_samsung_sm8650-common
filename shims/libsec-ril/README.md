@@ -116,7 +116,26 @@ Logged as `APDU-CLA fix` / `apdu-cla-fix`.
 Without this, ES10 download (`BF22` / `BF2D` / `BF38` / …) fails even though
 the ISD-R channel opens.
 
-### 5. APDU diagnostics
+### 5. MEP-A1 EnableProfile port inject (`BF31` only, gated)
+
+**Problem:** When Samsung `ril.esim.mep_mode` advertises MEP-A1 but HAL reports
+another mode, AOSP omits `targetPortNumber` (tag `82`) and EnableProfile returns
+**`6A80`**. Injecting `82` on cards that are not MEP-A1 also yields **`6A80`**.
+
+**Fix:** Rewrite EnableProfile only when Samsung advertises MEP-A1
+(`ril.esim.mep_mode` is `1` / `0,1` / `,1`) or
+`vendor.calls.esim_force_mep_a1=1`:
+
+- Append `820101` (Android port 0 → eUICC port 1).
+- Bump short-form content length and `RIL_SIM_APDU.p3`.
+- **Heap-allocate** the rewritten hex (`malloc`); `libril_sem` frees
+  `apdu->data` after transmit — pointing at static storage aborts under MTE.
+
+**Do not** inject on **DisableProfile (`BF32`)**.
+
+Logged as `APDU-MEP inject port1` / `apdu-mep-port`.
+
+### 6. APDU diagnostics
 
 `OPEN_CHANNEL` / `CLOSE_CHANNEL` / `TRANSMIT_APDU_*` are logged with socket id,
 channel, CLA/INS, ES10 tag class (`BF22`, `BF31`, …), and response SW. Short
@@ -139,5 +158,6 @@ Useful SW codes seen during bring-up:
 |----|----------------------|
 | `9000` | Success |
 | `6986` | Bad CLA (fixed by session CLA strip) |
-| `6A80` | Incorrect parameters in ES10 payload |
+| `6A80` | Incorrect parameters (missing/extra MEP port TLV) |
+| MTE abort in `rild` on switch | Shim pointed rewritten `BF31` at static storage; `libril_sem` then `free()`d it — use heap (`malloc`) instead |
 
