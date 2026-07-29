@@ -22,6 +22,7 @@
 #include <cstdio>
 #include <cstddef>
 #include <cstdint>
+#include <cstdlib>
 #include <cstring>
 #include <mutex>
 
@@ -234,6 +235,105 @@ static bool fixupSamsungApduCla(int request, void* data, size_t datalen) {
     ALOGI("APDU-CLA fix session=%d cla %02X -> %02X",
             apdu->sessionid, before & 0xff, apdu->cla & 0xff);
     dbg("apdu-cla-fix");
+    return true;
+}
+
+static unsigned hexNibble(char c) {
+    if (c >= '0' && c <= '9') return static_cast<unsigned>(c - '0');
+    if (c >= 'A' && c <= 'F') return static_cast<unsigned>(c - 'A' + 10);
+    if (c >= 'a' && c <= 'f') return static_cast<unsigned>(c - 'a' + 10);
+    return 0;
+}
+
+static unsigned hexByteAt(const char* p) {
+    return (hexNibble(p[0]) << 4) | hexNibble(p[1]);
+}
+
+// When Samsung ril.esim.mep_mode advertises MEP-A1 (or
+// vendor.calls.esim_force_mep_a1=1), EnableProfile needs targetPortNumber
+// (tag 82). HAL may report a different MEP mode so AOSP omits it and the card
+// returns 6A80. Inject only in that case — adding 82 on non-MEP-A1 cards also
+// yields 6A80.
+static bool shouldInjectMepA1Port() {
+    char force[PROP_VALUE_MAX] = {};
+    __system_property_get("vendor.calls.esim_force_mep_a1", force);
+    if (force[0] == '1' && force[1] == '\0') {
+        return true;
+    }
+    char mep[PROP_VALUE_MAX] = {};
+    __system_property_get("ril.esim.mep_mode", mep);
+    // Formats seen: "1", "0,1", ",1"
+    if (std::strcmp(mep, "1") == 0) {
+        return true;
+    }
+    const char* comma = std::strchr(mep, ',');
+    if (comma != nullptr && comma[1] == '1' && (comma[2] == '\0' || comma[2] == ',')) {
+        return true;
+    }
+    return false;
+}
+
+// IMPORTANT: libril_sem frees RIL_SIM_APDU.data after transmit. Never point it
+// at static storage — that aborts under MTE ("Pointer tag … truncated").
+static bool injectMepA1Port(int request, void* data, size_t datalen) {
+    if (request != RIL_REQUEST_SIM_TRANSMIT_APDU_CHANNEL
+            && request != RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC) {
+        return false;
+    }
+    if (!shouldInjectMepA1Port()) {
+        return false;
+    }
+    if (data == nullptr || datalen < sizeof(RIL_SIM_APDU)) {
+        return false;
+    }
+    auto* apdu = static_cast<RIL_SIM_APDU*>(data);
+    if (apdu->data == nullptr) {
+        return false;
+    }
+    const char* hex = apdu->data;
+    // Only EnableProfile — DisableProfile must stay without tag 82.
+    if (std::strncmp(hex, "BF31", 4) != 0) {
+        return false;
+    }
+    const size_t hexLen = std::strlen(hex);
+    // Already has a trailing targetPortNumber TLV (82 01 xx)?
+    if (hexLen >= 6
+            && hex[hexLen - 6] == '8' && hex[hexLen - 5] == '2'
+            && hex[hexLen - 4] == '0' && hex[hexLen - 3] == '1') {
+        return false;
+    }
+    // Short-form length only: BF3x LL <LL bytes>
+    if (hexLen < 6 || hex[4] == '8') {
+        ALOGW("BF31: skip port inject (unexpected len encoding)");
+        return false;
+    }
+    const unsigned contentLen = hexByteAt(hex + 4);
+    if (6 + contentLen * 2 != hexLen) {
+        ALOGW("BF31: skip port inject (len mismatch %zu vs %u)",
+                hexLen, 6 + contentLen * 2);
+        return false;
+    }
+    const unsigned newContentLen = contentLen + 3;  // + 82 01 01
+    if (newContentLen > 0x7f) {
+        return false;
+    }
+    // MEP-A1: framework port 0 → eUICC port 1. Heap-allocate so SemRadioSim's
+    // memsetAndFreeStrings can free the pointer after the request completes.
+    char* rewritten = static_cast<char*>(std::malloc(hexLen + 6 + 1));
+    if (rewritten == nullptr) {
+        return false;
+    }
+    if (std::snprintf(rewritten, hexLen + 6 + 1,
+            "%.4s%02X%s820101", hex, newContentLen, hex + 6)
+            < 0) {
+        std::free(rewritten);
+        return false;
+    }
+    ALOGI("APDU-MEP inject port1: %s -> %s", hex, rewritten);
+    std::free(apdu->data);
+    apdu->data = rewritten;
+    apdu->p3 = static_cast<int>(std::strlen(rewritten) / 2);
+    dbg("apdu-mep-port");
     return true;
 }
 
@@ -680,6 +780,7 @@ static void shimOnRequest(
         RIL_SOCKET_ID socketId) {
     // Must run before logging so breadcrumbs show the CLA/payload actually sent.
     fixupSamsungApduCla(request, data, datalen);
+    injectMepA1Port(request, data, datalen);
 
     if (isApduDiagRequest(request)) {
         logApduRequest(request, data, datalen, socketId, token);
