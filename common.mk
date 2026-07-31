@@ -192,7 +192,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.ramplus \
-    init.esim_switch.rc \
     init.fingerprint.rc \
     init.nfc.samsung.rc \
     init.ramplus.rc \

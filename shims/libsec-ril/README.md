@@ -16,8 +16,7 @@ Related pieces outside this directory:
 | Path | Role |
 |------|------|
 | `../../extract-files.py` | Renames stock blob → `libsec-ril-impl.so`; binary NOPs for UICC enablement |
-| `../../init/init.esim_switch.rc` | Bridges `persist.sys.esim_switch` → `vendor.calls.esim_switch` |
-| `hardware/samsung/packages/SamsungEsimSwitcher` | Settings UI that sets the persist prop and refreshes EID |
+| `hardware/samsung/packages/SamsungEsimSwitcher` | Settings UI + `init.esim_switch.rc` prop bridge |
 
 ## How the wrap works
 
