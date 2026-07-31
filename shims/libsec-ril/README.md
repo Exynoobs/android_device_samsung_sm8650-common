@@ -17,7 +17,7 @@ Related pieces outside this directory:
 |------|------|
 | `../../extract-files.py` | Renames stock blob → `libsec-ril-impl.so`; binary NOPs for UICC enablement |
 | `../../init/init.esim_switch.rc` | Bridges `persist.sys.esim_switch` → `vendor.calls.esim_switch` |
-| `../../packages/EsimSwitcher` | Settings UI that sets the persist prop and refreshes EID |
+| `hardware/samsung/packages/SamsungEsimSwitcher` | Settings UI that sets the persist prop and refreshes EID |
 
 ## How the wrap works
 
@@ -146,7 +146,7 @@ logcat.
 
 | Property | Side | Meaning |
 |----------|------|---------|
-| `persist.sys.esim_switch` | system | User/app intent (`0`/`1`); written by EsimSwitcher |
+| `persist.sys.esim_switch` | system | User/app intent (`0`/`1`); written by SamsungEsimSwitcher |
 | `vendor.calls.esim_switch` | vendor | Shim input (from init bridge) |
 | `vendor.calls.esim_ready` | vendor | Shim output: hybrid slot is eUICC |
 | `vendor.calls.esim_dbg` | vendor | Last breadcrumb string |
