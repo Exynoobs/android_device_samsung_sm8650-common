@@ -125,6 +125,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
+# eUICC
+PRODUCT_PACKAGES += \
+    SamsungEsimSwitcher
+
 # Fastboot
 PRODUCT_PACKAGES += \
     fastbootd
