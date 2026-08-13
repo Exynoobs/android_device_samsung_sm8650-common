@@ -62,6 +62,7 @@ persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
 ro.bluetooth.a2dp_offload.supported=true
 
 # Camera
+debug.unihal.bypass=1
 ro.camera.enableCamera1MaxZsl=1
 
 # Crypto
@@ -73,7 +74,6 @@ dalvik.vm.dex2oat64.enabled=true
 # Display
 persist.sys.sf.color_mode=0
 persist.sys.sf.hs_mode=0
-ro.camera.disableJpegR=true
 vendor.display.allow_3d_adaptive_tm_external=1
 vendor.display.defer_fps_frame_count=4
 vendor.display.disable_3d_adaptive_tm=0
