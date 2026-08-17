@@ -5,6 +5,9 @@ vendor.samsung.hardware.gnss.ISehGnss/default                       u:object_r:h
 vendor.samsung.hardware.keymint.ISehKeyMintExtension/default        u:object_r:hal_keymint_service:s0
 vendor.samsung.hardware.keymint.ISehKeyMintFactory/default          u:object_r:hal_keymint_service:s0
 
+# Widevine
+vendor.samsung.hardware.security.widevine.keyprov.ISehWidevineKeyProv/default u:object_r:hal_drm_service:s0
+
 # Audio
 vendor.samsung.hardware.audio.ISecAudioHal/default                  u:object_r:hal_sec_audio_service:s0
 

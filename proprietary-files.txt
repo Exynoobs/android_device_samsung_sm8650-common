@@ -1098,6 +1098,15 @@ vendor/lib64/libspl.so
 vendor/lib64/vendor.qti.hardware.qseecom-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 
+# Widevine
+system/lib64/vendor.samsung.hardware.security.widevine.keyprov-V2-ndk.so
+vendor/apex/com.google.android.widevine.nonupdatable.apex
+vendor/bin/hw/vendor.samsung.hardware.security.widevine.keyprov-service
+vendor/etc/init/vendor.samsung.hardware.security.widevine.keyprov-service.rc
+vendor/etc/vintf/manifest/vendor.samsung.hardware.security.widevine.keyprov-service.xml
+vendor/lib64/liboemcrypto.so
+vendor/lib64/vendor.samsung.hardware.security.widevine.keyprov-V1-ndk.so
+
 # QSPM
 vendor/lib64/libqspm-mem-utils-vendor.so
 vendor/lib64/vendor.qti.qspmhal-V1-ndk.so
