@@ -373,6 +373,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.mbms.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.mbms.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml
 
+# Pull Qualcomm IMS/RCS telephony packages when those repos are present.
+$(call inherit-product-if-exists, vendor/qcom/opensource/commonsys-intf/telephony/config/telephony_vendor_product.mk)
+$(call inherit-product-if-exists, vendor/qcom/opensource/commonsys/telephony-apps/ims/config/ims_vendor_product.mk)
+$(call inherit-product-if-exists, vendor/qcom/opensource/dataservices/dataservices_vendor_product.mk)
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.qti \

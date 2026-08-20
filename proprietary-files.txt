@@ -931,6 +931,29 @@ vendor/lib64/vendor.samsung.hardware.security.hermes-V1-ndk.so|b439f1b1c4396ab9f
 # HyPer
 vendor/lib64/vendor.samsung.hardware.hyper-V2-ndk.so
 
+# IMS
+system/lib64/vendor.qti.diaghal-V1-ndk.so
+system_ext/etc/sysconfig/qti_whitelist_system_ext.xml
+system_ext/framework/vendor.qti.ims.connection-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.factory-V2.0-java.jar
+system_ext/framework/vendor.qti.ims.factory-V2.1-java.jar
+system_ext/framework/vendor.qti.ims.factory-V2.2-java.jar
+system_ext/framework/vendor.qti.ims.rcssip-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.rcssip-V1.1-java.jar
+system_ext/framework/vendor.qti.ims.rcssip-V1.2-java.jar
+system_ext/framework/vendor.qti.ims.rcsuce-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.rcsuce-V1.1-java.jar
+system_ext/framework/vendor.qti.ims.rcsuce-V1.2-java.jar
+system_ext/lib64/libdiag_system.so
+system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
+system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
+vendor/etc/init/ims_rtp_daemon.rc
+vendor/etc/init/imsdaemon.rc
+vendor/etc/permissions/vendor.samsung.hardware.telephony.cdma_excluded.xml
+vendor/etc/seccomp_policy/imsrtp.policy
+vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so
+vendor/lib64/vendor.qti.ims.rcsconfig@1.1.so
+
 # Kernel
 vendor/bin/init.kernel.post_boot-pineapple.sh
 vendor/bin/init.kernel.post_boot.sh
