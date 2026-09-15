@@ -179,6 +179,9 @@ PRODUCT_PACKAGES += \
     IPACM_cfg.xml \
     IPACM_Filter_cfg.xml
 
+# IMS
+$(call inherit-product, hardware/lineage/generic-ims/ims.mk)
+
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
