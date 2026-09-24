@@ -1,8 +1,15 @@
-cc_library_shared {
-    name: "libsec-ril",
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// rild loads libsec-ril.so, and each shim dlopen()s the next:
+// libsec-ril.so (SMSC) -> libsec-ril-euicc.so (eUICC) -> libsec-ril-impl.so (stock)
+
+cc_defaults {
+    name: "libsec-ril-shim-defaults",
     vendor: true,
     compile_multilib: "64",
-    srcs: ["libsec_ril_smsc_shim.cpp"],
     cflags: [
         "-Wall",
         "-Wextra",
@@ -10,7 +17,6 @@ cc_library_shared {
         "-DANDROID_MULTI_SIM",
         "-DANDROID_SIM_COUNT_2",
         "-DRIL_SHLIB",
-        "-DREAL_LIB_NAME=\"libsec-ril-impl.so\"",
     ],
     shared_libs: [
         "libdl",
@@ -19,4 +25,19 @@ cc_library_shared {
     include_dirs: [
         "hardware/ril/include",
     ],
+}
+
+cc_library_shared {
+    name: "libsec-ril",
+    defaults: ["libsec-ril-shim-defaults"],
+    srcs: ["libsec_ril_smsc_shim.cpp"],
+    cflags: ["-DREAL_LIB_NAME=\"libsec-ril-euicc.so\""],
+    required: ["libsec-ril-euicc"],
+}
+
+cc_library_shared {
+    name: "libsec-ril-euicc",
+    defaults: ["libsec-ril-shim-defaults"],
+    srcs: ["libsec_ril_euicc_shim.cpp"],
+    cflags: ["-DREAL_LIB_NAME=\"libsec-ril-impl.so\""],
 }
