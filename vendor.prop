@@ -184,10 +184,6 @@ persist.backup.ntpServer=0.pool.ntp.org
 # Netflix
 ro.netflix.bsp_rev=Q8650-37577-1
 
-# PASR
-vendor.pasr.activemode.enabled=true
-vendor.power.pasr.enabled=true
-
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
