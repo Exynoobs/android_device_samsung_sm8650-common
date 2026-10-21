@@ -20,3 +20,5 @@ ro.vendor.qti.va_aosp.support=1
 
 # Radio
 ril.subscription.types=NV,RUIM
+ro.telephony.euicc.session_id_logical_channels=true
+ro.telephony.uicc.mep_mode_from_slot_status=true
