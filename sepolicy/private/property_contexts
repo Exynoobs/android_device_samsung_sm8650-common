@@ -8,6 +8,9 @@ ro.omc.region                                    u:object_r:exported_config_prop
 ro.csc.                                          u:object_r:exported_config_prop:s0
 mdc.                                             u:object_r:exported_config_prop:s0
 
+# HDR
+hdr.                                             u:object_r:sec_hdr_prop:s0
+
 # Hermesd
 security.securehw.                               u:object_r:vendor_securehw_prop:s0
 security.securenvm.available                     u:object_r:vendor_securenvm_prop:s0
