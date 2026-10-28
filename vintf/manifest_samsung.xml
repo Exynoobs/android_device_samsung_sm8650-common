@@ -36,6 +36,14 @@
         <fqname>ISehKeyMintFactory/default</fqname>
     </hal>
     <hal format="aidl">
+        <name>vendor.samsung.hardware.radio.channel</name>
+        <version>1</version>
+        <fqname>ISehRadioChannel/epdgd</fqname>
+        <fqname>ISehRadioChannel/epdgd2</fqname>
+        <fqname>ISehRadioChannel/imsd</fqname>
+        <fqname>ISehRadioChannel/imsd2</fqname>
+    </hal>
+    <hal format="aidl">
         <name>vendor.lineage.touch</name>
         <version>1</version>
         <interface>

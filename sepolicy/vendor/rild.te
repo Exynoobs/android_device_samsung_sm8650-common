@@ -39,6 +39,9 @@ allow rild vendor_radio_vendor_data_file:file create_file_perms;
 r_dir_file(rild, hal_audio_default)
 r_dir_file(rild, hal_camera_default)
 
+# Allow rild to select the SIM for CS call audio
+hal_client_domain(rild, hal_audio)
+
 set_prop(rild, vendor_data_ko_prop)
 set_prop(rild, vendor_data_shsusr_prop)
 

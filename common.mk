@@ -319,9 +319,8 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libsec-ril \
-    secril_config_svc \
-    sehradiomanager
+    android.hardware.radio-service.samsung \
+    secril_config_svc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ril/sehradiomanager.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sehradiomanager.conf

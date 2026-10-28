@@ -1094,13 +1094,11 @@ vendor/etc/init/vendor.qti.smp2p.rc
 vendor/etc/init/vendor.qti.tftp.rc
 
 # RIL
-vendor/bin/hw/rild
 vendor/bin/qms
 vendor/etc/init/init.vendor.onebinary.rc
 vendor/etc/init/init.vendor.rilcommon.rc
 vendor/etc/init/qms.rc
 vendor/etc/init/vendor.samsung.rilchip.qcom.rc
-vendor/etc/init/vendor.samsung.rild.rc
 vendor/etc/locale/plmn_delta_eng.bin
 vendor/etc/locale/plmn_delta_zh-rCN.bin
 vendor/etc/locale/plmn_delta_zh-rHK.bin
@@ -1116,22 +1114,15 @@ vendor/etc/qms_log_config
 vendor/etc/sec_config_oem
 vendor/etc/seccomp_policy/qms.policy
 vendor/etc/vintf/manifest/qms-saidl.xml
-vendor/etc/vintf/manifest/vendor.samsung.hardware.radio_manifest_2_34.xml
-vendor/etc/vintf/manifest/vendor.samsung.hardware.sehradio_manifest_2_34.xml
 vendor/lib64/libVendorSemDataProps.so
 vendor/lib64/libVendorSemTelephonyProps.so
 vendor/lib64/libengmode_client.so
-vendor/lib64/libril_sem.so
-vendor/lib64/libsec-ril.so:vendor/lib64/libsec-ril-impl.so;FIX_SONAME|5f1ef8b2400cedad2c32e8e65deaca1d0cbe12a5|f66bd8e4a895104290fd3ec5917a9f5f1c2c5a1a
+vendor/lib64/libsec-ril.so:vendor/lib64/libsec-ril-impl.so;FIX_SONAME|5f1ef8b2400cedad2c32e8e65deaca1d0cbe12a5|ccf6ef50f71a2b3708b1ca8b000b5aae5010b041
 vendor/lib64/libsec_semRil.so
 vendor/lib64/libsecril-client.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libvkmanager_vendor.so
 vendor/lib64/vendor.samsung.hardware.radio-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.radio.bridge-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.channel-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.radio.data-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.radio.messaging-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.radio.sim-V1-ndk.so
 
 # RIL - UIM
 product/etc/permissions/UimService.xml
