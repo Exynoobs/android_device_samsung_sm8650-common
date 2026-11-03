@@ -208,6 +208,7 @@ ro.vendor.use_data_netmgrd=false
 
 # Sensor
 persist.vendor.sensors.debug.hal=0
+ro.vendor.sensors.proximity_companion=com.samsung.sensor.call_gesture
 
 # SoC
 ro.soc.manufacturer=QTI
