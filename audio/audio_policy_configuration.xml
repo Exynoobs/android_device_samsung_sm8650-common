@@ -249,6 +249,21 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
+                <devicePort tagName="BT A2DP Out" type="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP" role="sink"
+                            encodedFormats="AUDIO_FORMAT_SBC AUDIO_FORMAT_AAC AUDIO_FORMAT_APTX AUDIO_FORMAT_APTX_HD AUDIO_FORMAT_LDAC">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="BT A2DP Headphones" type="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES" role="sink"
+                            encodedFormats="AUDIO_FORMAT_SBC AUDIO_FORMAT_AAC AUDIO_FORMAT_APTX AUDIO_FORMAT_APTX_HD AUDIO_FORMAT_LDAC">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="BT A2DP Speaker" type="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_SPEAKER" role="sink"
+                            encodedFormats="AUDIO_FORMAT_SBC AUDIO_FORMAT_AAC AUDIO_FORMAT_APTX AUDIO_FORMAT_APTX_HD AUDIO_FORMAT_LDAC">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
                 <devicePort tagName="BT BLE Out" type="AUDIO_DEVICE_OUT_BLE_HEADSET" role="sink"
                             encodedFormats="AUDIO_FORMAT_LC3 VX_AUDIO_FORMAT_APTX_ADAPTIVE_QLEA">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -381,6 +396,12 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
                        sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BLE In"/>
                 <route type="mix" sink="mmap_no_irq_in"
                        sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In,Wired Headset Mic"/>
+                <route type="mix" sink="BT A2DP Out"
+                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,direct_pcm,voip_rx,haptics output,spatial output"/>
+                <route type="mix" sink="BT A2DP Headphones"
+                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,direct_pcm,voip_rx,haptics output,spatial output"/>
+                <route type="mix" sink="BT A2DP Speaker"
+                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,direct_pcm,voip_rx,haptics output"/>
                 <route type="mix" sink="BT BLE Speaker"
                        sources="primary output,raw,mmap_no_irq_out,deep_buffer,direct_pcm,voip_rx,haptics output"/>
                 <route type="mix" sink="BT BLE Broadcast"
@@ -431,9 +452,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
                        sources="usb_accessory output"/>
             </routes>
         </module>
-
-        <!-- Bluetooth Audio HAL -->
-        <xi:include href="/vendor/etc/bluetooth_audio_policy_configuration.xml"/>
 
         <!-- Remote Submix Audio HAL -->
         <xi:include href="/vendor/etc/r_submix_audio_policy_configuration.xml"/>
