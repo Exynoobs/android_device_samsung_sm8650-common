@@ -63,6 +63,9 @@
 # Touchscreen
 /sys/devices/platform/soc/ac0000.qcom,qupv3_1_geni_se/a90000.spi/spi_master/spi[0-9]/spi[0-9].[0-9]/wakeup(/.*)? u:object_r:sysfs_wakeup:s0
 
+# UWB device
+/dev/sr200                                   u:object_r:uwb_device:s0
+
 # UFS Devices
 /dev/block/platform/soc/1d84000.ufshc/by-name/abl            u:object_r:vendor_custom_ab_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/aop_config     u:object_r:vendor_custom_ab_block_device:s0
@@ -108,6 +111,7 @@
 /(vendor|system/vendor)/bin/hw/secaudiohalaidl                                                               u:object_r:hal_audio_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch-service\.samsung(-q5q)?                                u:object_r:hal_lineage_touch_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.spen-service                                       u:object_r:hal_samsung_spen_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.uwb@1\.0-service                                   u:object_r:hal_uwb_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay-service.samsung-qcom                             u:object_r:hal_lineage_livedisplay_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.powershare-service\.samsung                                  u:object_r:hal_lineage_powershare_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.2-service                                u:object_r:hal_secure_element_default_exec:s0

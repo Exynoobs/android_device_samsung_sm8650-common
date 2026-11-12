@@ -974,7 +974,6 @@ vendor/lib64/vendor.samsung.hardware.media.mpp-V5-ndk.so
 # NFC
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nxp.conf
-vendor/etc/libuwb-nxp.conf
 vendor/lib64/nfc_nci_nxpsn_ecp.so
 
 # NFC firmware
@@ -1228,6 +1227,18 @@ vendor/lib64/vendor.qti.hardware.trustedui@1.2.so
 # UBWCP
 vendor/bin/ubwcconvert
 vendor/lib64/libubwcp.so
+
+# UWB
+vendor/bin/hw/vendor.samsung.hardware.uwb@1.0-service
+vendor/etc/init/init.vendor.uwb.rc
+vendor/etc/init/vendor.samsung.hardware.uwb@1.0-service.rc
+vendor/etc/libuwb-countrycode.conf
+vendor/etc/libuwb-feature.conf
+vendor/etc/libuwb-nxp.conf
+vendor/etc/libuwb-uci.conf
+vendor/etc/uwb_key
+vendor/etc/vintf/manifest/vendor.samsung.hardware.uwb@1.0-service.xml
+vendor/lib64/uwb_uci.hal.so
 
 # Widevine DRM
 vendor/apex/com.google.android.widevine.nonupdatable.apex

@@ -229,6 +229,9 @@ vendor.usb.rndis.func.name=gsi
 vendor.usb.use_ffs_mtp=1
 vendor.usb.use_gadget_hal=0
 
+# UWB
+ro.vendor.uwb.feature.chipname=sr200
+
 # WiFi
 wifi.aware.interface=wifi-aware0
 

@@ -13,3 +13,6 @@ type drb_device, dev_type;
 
 # Goodix fingerprint device
 type goodix_fingerprint_device, dev_type;
+
+# UWB device
+type uwb_device, dev_type;

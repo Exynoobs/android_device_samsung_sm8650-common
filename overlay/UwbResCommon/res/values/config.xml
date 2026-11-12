@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <bool name="android_specific_timesync_supported">true</bool>
+    <bool name="aosp_timesync_supported">false</bool>
+    <bool name="background_ranging_enabled">true</bool>
+    <bool name="ccc_absolute_uwb_initiation_time_enabled">true</bool>
+    <bool name="ccc_ranging_stopped_params_send_enabled">true</bool>
+    <bool name="ccc_supported_range_data_ntf_config">true</bool>
+    <bool name="ccc_supported_sync_codes_little_endian">true</bool>
+    <bool name="ccc_two_byte_config_id_little_endian_supported">true</bool>
+    <bool name="enable_filters">false</bool>
+    <bool name="enable_random_hopmodekey">true</bool>
+    <bool name="fira_supported_extension_ccc">true</bool>
+    <bool name="is_multicast_list_update_ntf_v2_supported">true</bool>
+    <bool name="is_multicast_list_update_rsp_v2_supported">true</bool>
+    <bool name="timesync_ble_uncertainty_included">false</bool>
+
+    <integer name="timesync_ble_time_uncertainty_us">2000</integer>
+    <integer name="timesync_uncertainty_override">88</integer>
+
+    <string-array name="mcc_mcc_oem_override_list" translatable="false">
+        <item>901</item>
+    </string-array>
+</resources>

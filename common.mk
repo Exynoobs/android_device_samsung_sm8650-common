@@ -294,6 +294,7 @@ PRODUCT_PACKAGES += \
     SettingsResSamsung \
     SystemUIResCommon \
     TelephonyResCommon \
+    UwbResCommon \
     WifiResCommon \
     WifiResTarget \
     WifiResTarget_spf
@@ -391,6 +392,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+
+# UWB
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.uwb.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.uwb.xml
 
 # Vendor service manager
 PRODUCT_PACKAGES += \
