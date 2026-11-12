@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from Samsung Galaxy S24 Ultra (S928BXXS6DZF2)
+## are from Samsung Galaxy S24 Ultra (S928BXXU6EZIF)
 
 # ADSP
 vendor/bin/adsprpcd
@@ -975,7 +975,7 @@ vendor/lib64/vendor.samsung.hardware.media.mpp-V5-ndk.so
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nxp.conf
 vendor/etc/libuwb-nxp.conf
-vendor/lib64/nfc_nci_nxpsn.so
+vendor/lib64/nfc_nci_nxpsn_ecp.so
 
 # NFC firmware
 vendor/firmware/nfc/libsn300u_fw.so
