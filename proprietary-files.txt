@@ -917,13 +917,11 @@ vendor/lib64/vendor.samsung.hardware.keymint-V3-ndk.so|9c58af7f50e733bb6646963cb
 # Media
 system_ext/lib64/libmmosal.so
 system_ext/lib64/libmmparser_lite.so
-vendor/bin/hw/samsung.software.media.c2@1.0-service
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/bin/init.qti.media.sh
 vendor/bin/init.qti.qcv.sh
 vendor/etc/init/init.qti.media.rc
 vendor/etc/init/init.qti.qcv.rc
-vendor/etc/init/samsung.software.media.c2@1.0-service.rc
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
 vendor/etc/media_codecs_performance_pineapple.xml
 vendor/etc/media_codecs_performance_pineapple_vendor.xml
@@ -935,9 +933,6 @@ vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_pineapple.xml
 vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
-vendor/etc/seccomp_policy/samsung.software.media.c2-base-policy
-vendor/etc/seccomp_policy/samsung.software.media.c2-ext-policy
-vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libSecC2ComponentStore.so
 vendor/lib64/libc2filterplugin.so

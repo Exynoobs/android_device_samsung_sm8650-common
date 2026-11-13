@@ -249,6 +249,16 @@ PRODUCT_COPY_FILES += \
     $(AUDIO_HAL_DIR)/configs/common/codec2/service/1.0/c2audio.vendor.base-arm64.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.base-arm64.policy \
     $(AUDIO_HAL_DIR)/configs/common/codec2/service/1.0/c2audio.vendor.ext-arm64.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy
 
+PRODUCT_PACKAGES += \
+    android.software.media.c2-service.samsung
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/seccomp_policy/android.software.media.c2-extended-seccomp_policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/android.software.media.c2-extended-seccomp_policy
+
+$(call soong_config_set,samsungCodec2Vars,c2_instance_type,legacy_default0)
+$(call soong_config_set,samsungCodec2Vars,target_componentstore_library,//vendor/samsung/sm8650-common:libSecC2ComponentStore)
+$(call soong_config_set_bool,samsungCodec2Vars,uses_legacy_component_store,true)
+
 # Memtrack
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service

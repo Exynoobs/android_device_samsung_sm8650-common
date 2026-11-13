@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Allowed by the stock Samsung Codec2 service policy
+fsetxattr: 1
+getppid: 1
+recvfrom: 1
+sendmsg: 1
+setsockopt: 1
+sysinfo: 1
+uname: 1
