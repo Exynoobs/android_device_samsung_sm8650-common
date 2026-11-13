@@ -3,10 +3,12 @@ r_dir_file(hal_thermal_default, vendor_sysfs_thermal)
 allow hal_thermal_default vendor_sysfs_thermal:file w_file_perms;
 
 # Allow thermal HAL to read vendor_sysfs_battery files
+allow hal_thermal_default sysfs_batteryinfo:dir search;
 r_dir_file(hal_thermal_default, vendor_sysfs_battery)
 
 # Allow hwservice_manager to find fwk_camera_hwservice
 allow hal_thermal_default fwk_camera_hwservice:hwservice_manager find;
+allow hal_thermal_default fwk_camera_service:service_manager find;
 
 # Allow hal_thermal_default to call cameraserver
 binder_call(hal_thermal_default, cameraserver)
